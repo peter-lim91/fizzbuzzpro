@@ -1,21 +1,23 @@
 import Head from 'next/head'
-import { createRef } from 'react'
+import { createRef, useState } from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
+import Register from '../components/Register'
+import Authorize from '../components/Authorize'
+import FizzBuzz from '../components/FizzBuzz'
 
+const API_URL = 'http://localhost:3000/api'
 
-const UPLOAD_URL = 'http://localhost:3000/api/upload'
+export async function getServerSideProps(context) {
+  const res = await axios.get(API_URL + '/state')
+  const state = res.data
 
-export default function Home() {
-  const fileInput = createRef()
+  return { props: { authorized: state.authorized } }
+}
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('file', fileInput.current.files[0])
-    axios.post(UPLOAD_URL, formData)
-    .then(r => console.log(r.body))
-  }
+export default function Home(props) {
+  console.log(props.authorized)
+  const [page, setPage] = useState(props.authorized ? 'fizzbuzz' : '')
 
   return (
     <div className={styles.container}>
@@ -26,13 +28,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to FizzBuzz Pro!</h1>
-        <form onSubmit={handleSubmit}>
-          <label>Select Image: </label>
-          <input type="file" name="file" ref={fileInput}></input>
-        <button type="submit">Submit</button>
-        </form>
-        {/* {file ?
-        } */}
+        {page === '' ? <Register setPage={setPage} /> : null}
+        {page === 'authorize' ? <Authorize setPage={setPage} /> : null}
+        {page === 'fizzbuzz' ? <FizzBuzz setPage={setPage} /> : null}
       </main>
     </div>
   )

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google-cloud/vision": "^2.3.1",
+    "@sendgrid/mail": "^7.4.2",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
@@ -21,7 +22,6 @@
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sendgrid-nodejs": "0.1.0-2",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
