@@ -1,0 +1,26 @@
+{
+  "name": "fizzbuzzpro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^2.3.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "gm": "^1.23.1",
+    "knex": "^0.95.2",
+    "next": "10.0.8",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "sendgrid-nodejs": "0.1.0-2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0"
+  }
+}
