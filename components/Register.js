@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function Register(props) {
   const [email, setEmail] = useState('')
-  const API_URL = 'http://localhost:3000/api'
+  const API_URL = 'http://localhost:3001/api'
 
   function handleGetCode(e) {
     e.preventDefault()

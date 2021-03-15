@@ -6,24 +6,27 @@ import Register from '../components/Register'
 import Authorize from '../components/Authorize'
 import FizzBuzz from '../components/FizzBuzz'
 
-const API_URL = 'http://localhost:3000/api'
+const API_URL = 'http://localhost:3001/api'
 
 export async function getServerSideProps(context) {
-  const res = await axios.get(API_URL + '/state')
-  const state = res.data
-
-  return { props: { authorized: state.authorized } }
+  const res = await axios({
+    method: 'get',
+    url: `${API_URL}/state`,
+    headers: context?.req?.headers?.cookie
+      ? { cookie: context.req.headers.cookie }
+      : undefined,
+  })
+  return { props: { authorized: res.data.authorized } }
 }
 
 export default function Home(props) {
-  console.log(props.authorized)
   const [page, setPage] = useState(props.authorized ? 'fizzbuzz' : '')
 
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main className={styles.main}>

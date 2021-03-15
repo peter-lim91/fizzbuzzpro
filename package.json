@@ -5,13 +5,21 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "express": "node server"
+    "start-next": "next start",
+    "express": "node server",
+    "start": "npm run express && npm run start-next",
+    "knex": "knex --knexfile server/db/knexfile.js",
+    "db:delete": "rm server/db/dev.sqlite3",
+    "db:migrate": "npm run knex migrate:latest",
+    "db:seed": "npm run knex seed:run",
+    "db:reset": "npm run knex migrate:rollback && npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
     "@google-cloud/vision": "^2.3.1",
     "@sendgrid/mail": "^7.4.2",
     "axios": "^0.21.1",
+    "connect-session-knex": "^2.0.0",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
