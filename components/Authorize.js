@@ -4,7 +4,7 @@ import axios from 'axios'
 function Authorize(props) {
   const [code, setCode] = useState()
   const [warning, setWarning] = useState()
-  const API_URL = 'http://localhost:3001/api'
+  const API_URL = 'http://localhost:3000/api'
 
   function handleAuthorize(e) {
     e.preventDefault()
