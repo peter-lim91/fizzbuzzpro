@@ -3,7 +3,8 @@ import axios from 'axios'
 
 function Register(props) {
   const [email, setEmail] = useState('')
-  const API_URL = 'https://fizzbuzzpro.herokuapp.com/api'
+  
+  const API_URL = `http://${context.req.headers.host}/api`
 
   function handleGetCode(e) {
     e.preventDefault()

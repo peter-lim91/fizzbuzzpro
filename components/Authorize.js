@@ -4,7 +4,7 @@ import axios from 'axios'
 function Authorize(props) {
   const [code, setCode] = useState()
   const [warning, setWarning] = useState()
-  const API_URL = 'https://fizzbuzzpro.herokuapp.com/api'
+  const API_URL = `http://${context.req.headers.host}/api`
 
   function handleAuthorize(e) {
     e.preventDefault()

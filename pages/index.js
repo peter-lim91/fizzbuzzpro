@@ -6,9 +6,10 @@ import Register from '../components/Register'
 import Authorize from '../components/Authorize'
 import FizzBuzz from '../components/FizzBuzz'
 
-const API_URL = 'https://fizzbuzzpro.herokuapp.com/api'
+
 
 export async function getServerSideProps(context) {
+  const API_URL = `http://${context.req.headers.host}/api`
   const res = await axios({
     method: 'get',
     url: `${API_URL}/state`,
@@ -21,7 +22,6 @@ export async function getServerSideProps(context) {
 
 export default function Home(props) {
   const [page, setPage] = useState(props.authorized ? 'fizzbuzz' : '')
-
   return (
     <div className={styles.container}>
       <Head>
