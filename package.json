@@ -7,7 +7,7 @@
     "build": "next build",
     "start-next": "next start",
     "start-e": "node server",
-    "start": "set NODE_ENV=production && node server",
+    "start": "node server",
     "knex": "knex --knexfile server/db/knexfile.js",
     "db:delete": "rm server/db/dev.sqlite3",
     "db:migrate": "npm run knex migrate:latest",
