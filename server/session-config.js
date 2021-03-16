@@ -5,7 +5,7 @@ const connection = require('./db/connection')
 
 const fileStoreOptions = {
   knex: connection,
-  createtable: false
+  createtable: true
 }
 
 const sessionConfig = session({
