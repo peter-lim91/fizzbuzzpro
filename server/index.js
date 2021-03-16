@@ -1,9 +1,9 @@
+
 const express = require('express')
 const next = require('next')
 const multer = require('multer')
 const session = require('./session-config')
 const cors = require('cors')
-// server.use()
 
 const { sendAuthorizationEmail } = require('./utils')
 
@@ -22,6 +22,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 const dev = process.env.NODE_ENV !== 'production'
+console.log(dev)
 const app = next({ dev })
 const handle = app.getRequestHandler()
 

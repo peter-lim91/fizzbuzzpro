@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start-next": "next start",
-    "express": "node server",
-    "start": "npm run express && npm run start-next",
+    "start-e": "node server",
+    "start": "set NODE_ENV=production && node server",
     "knex": "knex --knexfile server/db/knexfile.js",
     "db:delete": "rm server/db/dev.sqlite3",
     "db:migrate": "npm run knex migrate:latest",
@@ -28,6 +28,7 @@
     "knex": "^0.95.2",
     "multer": "^1.4.2",
     "next": "10.0.8",
+    "pg": "^8.5.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sqlite3": "^5.0.2"
