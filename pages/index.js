@@ -5,9 +5,10 @@ import styles from '../styles/Home.module.css'
 import Register from '../components/Register'
 import Authorize from '../components/Authorize'
 import FizzBuzz from '../components/FizzBuzz'
+import { API_URL } from '../components/api'
+
 
 export async function getServerSideProps(context) {
-  const API_URL = `http://${context.req.headers.host}/api`
   const res = await axios({
     method: 'get',
     url: `${API_URL}/state`,
