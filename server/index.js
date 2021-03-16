@@ -19,11 +19,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = process.env.NEXT_ENV !== 'production'
+// const dev = true
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const PORT =process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 app.prepare().then(() => {
   const server = express()
