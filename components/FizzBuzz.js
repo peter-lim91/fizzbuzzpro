@@ -1,7 +1,7 @@
 import { createRef } from 'react'
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3000/api'
+const API_URL = 'https://fizzbuzzpro.herokuapp.com/api'
 
 export default function FizzBuzz() {
   const fileInput = createRef()
