@@ -30,6 +30,20 @@ module.exports = {
     },
   },
 
+  heroku: {
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: path.join(__dirname, 'dev.sqlite3'),
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations'),
+    },
+    seeds: {
+      directory: path.join(__dirname, 'seeds'),
+    },
+  },
+
   staging: {
     client: 'postgresql',
     connection: {
@@ -47,7 +61,7 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL + '?ssl=true',
+    connection: process.env.DATABASE_URL,
     // connection: {
     //   database: 'my_db',
     //   user: 'username',
