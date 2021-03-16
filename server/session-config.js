@@ -5,7 +5,7 @@ const connection = require('./db/connection')
 
 const fileStoreOptions = {
   knex: connection,
-  createtable: true
+  createtable: true,
 }
 
 const sessionConfig = session({
@@ -13,7 +13,7 @@ const sessionConfig = session({
   store: new KnexSessionStore(fileStoreOptions),
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: { secure: false },
 })
 
 module.exports = sessionConfig

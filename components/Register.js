@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { API_URL } from './api'
 
 function Register(props) {
   const [email, setEmail] = useState('')
   
-  const API_URL = `http://${context.req.headers.host}/api`
-
   function handleGetCode(e) {
     e.preventDefault()
     if (!email) {
@@ -26,8 +25,13 @@ function Register(props) {
       <h2>Register Below!</h2>
       <form onSubmit={handleGetCode}>
         <label>Email: </label>
-        <input type="email" placeholder="Email" onChange={handleChange} value={email}></input>
-        <button type="submit"> Submit </button>
+        <input
+          type='email'
+          placeholder='Email'
+          onChange={handleChange}
+          value={email}
+        ></input>
+        <button type='submit'> Submit </button>
       </form>
     </>
   )

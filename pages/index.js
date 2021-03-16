@@ -6,8 +6,6 @@ import Register from '../components/Register'
 import Authorize from '../components/Authorize'
 import FizzBuzz from '../components/FizzBuzz'
 
-
-
 export async function getServerSideProps(context) {
   const API_URL = `http://${context.req.headers.host}/api`
   const res = await axios({

@@ -1,7 +1,6 @@
 import { createRef } from 'react'
 import axios from 'axios'
-
-const API_URL = 'https://fizzbuzzpro.herokuapp.com/api'
+import { API_URL } from './api'
 
 export default function FizzBuzz() {
   const fileInput = createRef()
@@ -15,8 +14,8 @@ export default function FizzBuzz() {
   return (
     <form onSubmit={handleImageSubmit}>
       <label>Select Image: </label>
-      <input type="file" name="file" ref={fileInput}></input>
-      <button type="submit">Submit</button>
+      <input type='file' name='file' ref={fileInput}></input>
+      <button type='submit'>Submit</button>
     </form>
   )
 }
