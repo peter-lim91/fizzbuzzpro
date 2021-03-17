@@ -1,6 +1,9 @@
 // Update with your config settings.
 const path = require('path')
 
+const pg = require('pg');
+pg.defaults.ssl = true;
+
 module.exports = {
   development: {
     client: 'sqlite3',
