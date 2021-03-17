@@ -1,4 +1,3 @@
-// Update with your config settings.
 const path = require('path')
 
 // const pg = require('pg');
@@ -65,12 +64,6 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
-    // connection: process.env.DATABASE_URL + '?sslmode=require&ssl=true',
-    // connection: {
-    //   database: 'my_db',
-    //   user: 'username',
-    //   password: 'password'
-    // },
     pool: {
       min: 2,
       max: 10,
