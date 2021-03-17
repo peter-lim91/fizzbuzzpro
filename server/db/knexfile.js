@@ -1,8 +1,8 @@
 // Update with your config settings.
 const path = require('path')
 
-const pg = require('pg');
-pg.defaults.ssl = true;
+// const pg = require('pg');
+// pg.defaults.ssl = true;
 
 module.exports = {
   development: {
@@ -65,6 +65,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
+    // connection: process.env.DATABASE_URL + '?sslmode=require&ssl=true',
     // connection: {
     //   database: 'my_db',
     //   user: 'username',
@@ -74,6 +75,7 @@ module.exports = {
       min: 2,
       max: 10,
     },
+    // ssl: true,
     // migrations: {
     //   tableName: 'knex_migrations',
     // }
