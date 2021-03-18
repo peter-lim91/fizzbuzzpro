@@ -29,7 +29,7 @@ async function detectFulltext(imageBuffer) {
     const client = new vision.ImageAnnotatorClient({
       credentials: {
         client_email: process.env.GV_CLIENT_EMAIL,
-        private_key: process.env.GV_PRIVATE_KEY,
+        private_key: `${process.env.GV_PRIVATE_KEY}`,
       },
     })
   
@@ -50,6 +50,7 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[2].y,
               ]
               image
+                .gravity('center')
                 .font('Arial', 25)
                 .fill('white')
                 .drawPolygon(...corners)

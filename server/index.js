@@ -37,9 +37,15 @@ app.prepare().then(() => {
   server.use(session)
 
   server.post('/api/upload', upload.single('file'), async (req, res) => {
-    detectFulltext(req.file.buffer).then((base64Image) => {
-      res.json({ image: base64Image })
-    })
+    try {
+      detectFulltext(req.file.buffer).then((base64Image) => {
+        res.json({ image: base64Image })
+      })
+    }
+    catch (error) {
+      console.log(error)
+      res.json({messge: 'error'})
+    }
     return null
   })
 
