@@ -36,6 +36,15 @@ app.prepare().then(() => {
   server.use(express.urlencoded({ extended: false }))
   server.use(session)
 
+  server.post('/api/upload', (req, res, next) => {
+    if (req?.session?.authorized) {
+      next ()
+    } else {
+      res.json({ authorized: false, message: 'You are not Authorized"' })
+    }
+    return null
+  })
+
   server.post('/api/upload', upload.single('file'), async (req, res) => {
     try {
       detectFulltext(req.file.buffer).then((base64Image) => {
@@ -54,7 +63,7 @@ app.prepare().then(() => {
     const code = Math.floor(Math.random() * 1e6)
     req.session.code = code
     req.session.authorized = false
-    // sendAuthorizationEmail(email, code)
+    sendAuthorizationEmail(email, code)
     res.json({ message: 'Code Generated' })
     console.log(req.session)
     return null
@@ -64,7 +73,6 @@ app.prepare().then(() => {
     const code = parseInt(req.body.code)
     if (req.session.code === code) {
       req.session.authorized = true
-      res.setHeader('set-Cookie', 'test')
       res.json({ authorized: true })
     } else {
       res.json({ authorized: false })
@@ -80,14 +88,6 @@ app.prepare().then(() => {
     return null
   })
 
-  server.get('/api/fizzbuzz', (req, res) => {
-    if (req?.session?.authorized) {
-      res.json({ authorized: true })
-    } else {
-      res.json({ authorized: false, message: 'You are not Authorized"' })
-    }
-    return null
-  })
 
   server.get('*', (req, res) => {
     return handle(req, res)
