@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const extRegex = new RegExp(/[\.][a-z]*$/, 'gi')
     const ext = file.originalname.match(extRegex)[0].slice(1)
+    const uniqueSuffix = Date.now()
     cb(null, `${file.fieldname}-${uniqueSuffix}.${ext}`)
   },
 })
