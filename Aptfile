@@ -23,4 +23,4 @@ sharutils
 transfig
 x11proto-core-dev
 zlib1g-dev
-ghostscript
+graphicsmagick
