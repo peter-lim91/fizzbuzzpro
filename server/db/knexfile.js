@@ -1,7 +1,9 @@
 const path = require('path')
 
-// const pg = require('pg');
-// pg.defaults.ssl = true;
+const pg = require('pg')
+pg.defaults.ssl = {
+   rejectUnauthorized: false,
+}
 
 module.exports = {
   development: {
