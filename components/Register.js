@@ -18,7 +18,7 @@ function Register(props) {
   }
 
   function handleChange(e) {
-    console.log('handlechange', e.target.value)
+    // console.log('handlechange', e.target.value)
     setEmail(e.target.value)
   }
 

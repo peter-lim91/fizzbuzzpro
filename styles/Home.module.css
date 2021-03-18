@@ -120,3 +120,8 @@
     flex-direction: column;
   }
 }
+
+.fizzbuzz {
+  width: 90%;
+  height: auto
+}

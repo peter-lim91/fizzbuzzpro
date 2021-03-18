@@ -4,24 +4,25 @@ const multer = require('multer')
 const session = require('./session-config')
 const cors = require('cors')
 
+const { detectFulltext } = require('./fizzbuzz')
 const { sendAuthorizationEmail } = require('./utils')
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/uploads')
-  },
-  filename: function (req, file, cb) {
-    const extRegex = new RegExp(/[\.][a-z]*$/, 'gi')
-    const ext = file.originalname.match(extRegex)[0].slice(1)
-    const uniqueSuffix = Date.now()
-    cb(null, `${file.fieldname}-${uniqueSuffix}.${ext}`)
-  },
-})
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './uploads')
+//   },
+//   filename: function (req, file, cb) {
+//     const extRegex = new RegExp(/[\.][a-z]*$/, 'gi')
+//     const ext = file.originalname.match(extRegex)[0].slice(1)
+//     const uniqueSuffix = Date.now()
+//     cb(null, `${file.fieldname}-${uniqueSuffix}.${ext}`)
+//   },
+// })
 
+const storage = multer.memoryStorage()
 const upload = multer({ storage })
 
 const dev = process.env.NEXT_ENV !== 'production'
-// const dev = true
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
@@ -35,9 +36,10 @@ app.prepare().then(() => {
   server.use(express.urlencoded({ extended: false }))
   server.use(session)
 
-  server.post('/api/upload', upload.single('file'), (req, res) => {
-    console.log(req.file)
-    res.json({ success: true })
+  server.post('/api/upload', upload.single('file'), async (req, res) => {
+    detectFulltext(req.file.buffer).then((base64Image) => {
+      res.json({ image: base64Image })
+    })
     return null
   })
 
@@ -71,16 +73,6 @@ app.prepare().then(() => {
     }
     return null
   })
-
-  server.get('/api/state', (req, res) => {
-    if (req?.session?.authorized) {
-      res.json({ authorized: true })
-    } else {
-      res.json({ authorized: false })
-    }
-    return null
-  })
-
 
   server.get('/api/fizzbuzz', (req, res) => {
     if (req?.session?.authorized) {

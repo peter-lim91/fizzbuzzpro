@@ -11,7 +11,7 @@ import { API_URL } from '../components/api'
 export async function getServerSideProps(context) {
   const res = await axios({
     method: 'get',
-    url: `${API_URL}/state`,
+    url: `${API_URL}/checkauth`,
     headers: context?.req?.headers?.cookie
       ? { cookie: context.req.headers.cookie }
       : undefined,
