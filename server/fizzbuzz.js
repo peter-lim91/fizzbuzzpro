@@ -50,8 +50,9 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[2].y,
               ]
               image
-                .gravity('center')
+                // .gravity('center')
                 .font('Arial', 25)
+              // .fontSize('25')
                 .fill('white')
                 .drawPolygon(...corners)
                 .fill('black')
