@@ -11,7 +11,7 @@ export default function FizzBuzz(props) {
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', fileInput.current.files[0])
-    axios.post(domain + 'api/upload', formData).then((r) => setImage(r.data.image))
+    axios.post(domain + '/api/upload', formData).then((r) => setImage(r.data.image))
   }
   return (
     <>
