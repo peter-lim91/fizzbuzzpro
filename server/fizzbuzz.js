@@ -51,7 +51,7 @@ async function detectFulltext(imageBuffer) {
               ]
               image
                 // .gravity('center')
-                .font('Arial', 25)
+                .font('arial.ttf', 25)
               // .fontSize('25')
                 .fill('white')
                 .drawPolygon(...corners)
