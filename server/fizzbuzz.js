@@ -45,6 +45,11 @@ async function detectFulltext(imageBuffer) {
             const wordText = word.symbols.map((s) => s.text).join('')
             const number = parseInt(wordText)
             if ((fb = fizzbuzz(number))) {
+              const color = () => {
+                if (fb === 'fizz') return 'white'
+                if (fb === 'buzz') return 'black'
+                if (fb === 'fizzbuzz') return 'darkgray'
+              }
               const corners = getPolyVertices(word)
               const vertexText = [
                 word.boundingBox.vertices[0].x,
@@ -54,11 +59,14 @@ async function detectFulltext(imageBuffer) {
               // const font = "Helvetica"
               console.log(font)
               image
-                .font(font, 25)
-                .fill('white')
+                .fill(color())
                 .drawPolygon(...corners)
-                .fill('black')
-                .drawText(...vertexText, fb)
+
+                // .font(font, 25)
+                // .fill('white')
+                // .drawPolygon(...corners)
+                // .fill('black')
+                // .drawText(...vertexText, fb)
             }
           })
         })
