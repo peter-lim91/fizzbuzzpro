@@ -51,11 +51,8 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[2].y,
               ]
               const fontDir = path.join(process.cwd(), '/.fonts', '/arial.ttf')
-              console.log(fontDir)
               image
-                // .gravity('center')
                 .font(fontDir, 25)
-              // .fontSize('25')
                 .fill('white')
                 .drawPolygon(...corners)
                 .fill('black')
