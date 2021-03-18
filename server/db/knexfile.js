@@ -66,12 +66,15 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
-    // ssl: 'no-verify',
+    ssl: {
+      sslmode: 'require',
+      rejectUnauthorized: false,
+    },
     pool: {
       min: 2,
       max: 10,
     },
-    // ssl: true,
+   
     // migrations: {
     //   tableName: 'knex_migrations',
     // }
