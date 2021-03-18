@@ -1,9 +1,9 @@
 const path = require('path')
 
-// const pg = require('pg')
-// pg.defaults.ssl = {
-//    rejectUnauthorized: false,
-// }
+const pg = require('pg')
+pg.defaults.ssl = {
+   rejectUnauthorized: false,
+}
 
 module.exports = {
   development: {
@@ -66,10 +66,6 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
-    ssl: {
-      sslmode: 'require',
-      rejectUnauthorized: false,
-    },
     pool: {
       min: 2,
       max: 10,
