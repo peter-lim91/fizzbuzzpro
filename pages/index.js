@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { createRef, useState } from 'react'
+import { createRef, useState, useEffect } from 'react'
 import axios from 'axios'
 import styles from '../styles/Home.module.css'
 import Register from '../components/Register'
@@ -20,7 +20,14 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home(props) {
+  const [domain, setDomain] = useState('')
   const [page, setPage] = useState(props.authorized ? 'fizzbuzz' : '')
+
+  useEffect(() => {
+    setDomain(window.location.origin)
+    console.log(window.location.origin)
+  }, [])
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -30,9 +37,9 @@ export default function Home(props) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to FizzBuzz Pro!</h1>
-        {page === '' ? <Register setPage={setPage} /> : null}
-        {page === 'authorize' ? <Authorize setPage={setPage} /> : null}
-        {page === 'fizzbuzz' ? <FizzBuzz setPage={setPage} /> : null}
+        {page === '' ? <Register setPage={setPage} domain={domain} /> : null}
+        {page === 'authorize' ? <Authorize setPage={setPage} domain={domain} /> : null}
+        {page === 'fizzbuzz' ? <FizzBuzz setPage={setPage} domain={domain} /> : null}
       </main>
     </div>
   )

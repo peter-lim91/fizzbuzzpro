@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { API_URL } from './api'
 
 function Authorize(props) {
+  const { domain } = props
   const [code, setCode] = useState()
   const [warning, setWarning] = useState()
 
   function handleAuthorize(e) {
     e.preventDefault()
-    axios.post(API_URL + '/authorize', { code }).then((r) => {
+    axios.post(domain + '/api/authorize', { code }).then((r) => {
       if (r.data.authorized) {
         props.setPage('fizzbuzz')
       } else {

@@ -1,9 +1,9 @@
 import { useState, createRef } from 'react'
 import axios from 'axios'
-import { API_URL } from './api'
 import FizzBuzzImage from './FizzBuzzImage'
 
-export default function FizzBuzz() {
+export default function FizzBuzz(props) {
+  const { domain } = props
   const fileInput = createRef()
   const [image, setImage] = useState()
 
@@ -11,7 +11,7 @@ export default function FizzBuzz() {
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', fileInput.current.files[0])
-    axios.post(API_URL + '/upload', formData).then((r) => setImage(r.data.image))
+    axios.post(domain + 'api/upload', formData).then((r) => setImage(r.data.image))
   }
   return (
     <>

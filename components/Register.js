@@ -5,6 +5,7 @@ import { API_URL } from './api'
 
 
 function Register(props) {
+  const { domain } = props
   const [email, setEmail] = useState('')
   
   function handleGetCode(e) {
@@ -13,7 +14,7 @@ function Register(props) {
       return null
     }
     axios
-      .post(API_URL + '/generatecode', { email })
+      .post(domain + '/api/generatecode', { email })
       .then(() => props.setPage('authorize'))
   }
 
