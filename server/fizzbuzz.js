@@ -50,11 +50,13 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[0].x,
                 word.boundingBox.vertices[2].y,
               ]
-              const fontDir = path.join(process.cwd(), '/.fonts', '/arial.ttf')
+              const fontDir = path.join(process.cwd(), '.fonts', 'arial.ttf')
+              const font = "ps:helvetica"
+              console.log(fontDir)
               image
-                .font('Ubuntu', 25)
-                // .fill('white')
-                // .drawPolygon(...corners)
+                .font(fontDir, 25)
+                .fill('white')
+                .drawPolygon(...corners)
                 .fill('black')
                 .drawText(...vertexText, fb)
             }
