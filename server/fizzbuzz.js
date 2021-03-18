@@ -52,7 +52,7 @@ async function detectFulltext(imageBuffer) {
               ]
               const fontDir = path.join(process.cwd(), '/.fonts', '/arial.ttf')
               image
-                .font(fontDir, 25)
+                .font('Helvetica', 25)
                 .fill('white')
                 .drawPolygon(...corners)
                 .fill('black')
