@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const gm = require('gm')
 const vision = require('@google-cloud/vision')
 
@@ -49,9 +50,11 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[0].x,
                 word.boundingBox.vertices[2].y,
               ]
+              const fontDir = path.join(process.cwd(), '/.fonts', '/arial.ttf')
+              console.log(fontDir)
               image
                 // .gravity('center')
-                .font('arial.ttf', 25)
+                .font(fontDir, 25)
               // .fontSize('25')
                 .fill('white')
                 .drawPolygon(...corners)
