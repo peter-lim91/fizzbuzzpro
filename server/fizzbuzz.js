@@ -50,7 +50,7 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[0].x,
                 word.boundingBox.vertices[2].y,
               ]
-              const font = path.join(__dirname, 'fonts','arial.ttf')
+              const font = path.join(process.cwd(), 'fonts','arial.ttf')
               // const font = "Helvetica"
               console.log(font)
               image
