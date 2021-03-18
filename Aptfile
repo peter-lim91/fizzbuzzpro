@@ -23,4 +23,4 @@ sharutils
 transfig
 x11proto-core-dev
 zlib1g-dev
-http://ftp.us.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.7_all.deb
+freetype2-demos
