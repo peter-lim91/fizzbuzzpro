@@ -81,6 +81,16 @@ app.prepare().then(() => {
     return null
   })
 
+
+  server.get('/api/fizzbuzz', (req, res) => {
+    if (req?.session?.authorized) {
+      res.json({ authorized: true })
+    } else {
+      res.json({ authorized: false, message: 'You are not Authorized' })
+    }
+    return null
+  })
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })
