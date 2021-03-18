@@ -51,10 +51,10 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[2].y,
               ]
               const fontDir = path.join(process.cwd(), '.fonts', 'arial.ttf')
-              const font = "ps:helvetica"
+              const font = "Nimbus-Sans"
               console.log(fontDir)
               image
-                .font(fontDir, 25)
+                .font(font, 25)
                 .fill('white')
                 .drawPolygon(...corners)
                 .fill('black')
