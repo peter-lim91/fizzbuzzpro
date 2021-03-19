@@ -31,14 +31,13 @@ const PORT = process.env.PORT || 3000
 app.prepare().then(() => {
   const server = express()
   server.use(cors())
-
   server.use(express.json())
   server.use(express.urlencoded({ extended: false }))
   server.use(session)
 
   server.post('/api/upload', (req, res, next) => {
     if (req?.session?.authorized) {
-      next ()
+      next()
     } else {
       res.json({ authorized: false, message: 'You are not Authorized"' })
     }
@@ -50,10 +49,9 @@ app.prepare().then(() => {
       detectFulltext(req.file.buffer).then((base64Image) => {
         res.json({ image: base64Image })
       })
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error)
-      res.json({messge: 'error'})
+      res.json({ messge: 'error' })
     }
     return null
   })
@@ -87,7 +85,6 @@ app.prepare().then(() => {
     }
     return null
   })
-
 
   server.get('*', (req, res) => {
     return handle(req, res)

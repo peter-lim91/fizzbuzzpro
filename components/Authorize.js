@@ -22,6 +22,7 @@ function Authorize(props) {
   }
   return (
     <form onSubmit={handleAuthorize}>
+      <p>Your access code has been sent. You may need to check your junk folder.</p>
       <label>Code: </label>
       <input type='code' placeholder='Code' onChange={handleChange}></input>
       <button type='submit'> Submit </button>

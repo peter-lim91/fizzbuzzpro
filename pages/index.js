@@ -7,7 +7,6 @@ import Authorize from '../components/Authorize'
 import FizzBuzz from '../components/FizzBuzz'
 import { API_URL } from '../components/api'
 
-
 export async function getServerSideProps(context) {
   const res = await axios({
     method: 'get',
@@ -27,7 +26,7 @@ export default function Home(props) {
     setDomain(window.location.origin)
     console.log(window.location.origin)
   }, [])
-  
+
   return (
     <div className={styles.container}>
       <Head>
@@ -37,9 +36,21 @@ export default function Home(props) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to FizzBuzz Pro!</h1>
+        <p>
+          Legend:
+          <br />
+          Red = Fizz
+          <br />
+          Green = Buzz
+          <br /> Blue = FizzBuzz
+        </p>
         {page === '' ? <Register setPage={setPage} domain={domain} /> : null}
-        {page === 'authorize' ? <Authorize setPage={setPage} domain={domain} /> : null}
-        {page === 'fizzbuzz' ? <FizzBuzz setPage={setPage} domain={domain} /> : null}
+        {page === 'authorize' ? (
+          <Authorize setPage={setPage} domain={domain} />
+        ) : null}
+        {page === 'fizzbuzz' ? (
+          <FizzBuzz setPage={setPage} domain={domain} />
+        ) : null}
       </main>
     </div>
   )

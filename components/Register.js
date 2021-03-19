@@ -2,12 +2,10 @@ import { useState } from 'react'
 import axios from 'axios'
 import { API_URL } from './api'
 
-
-
 function Register(props) {
   const { domain } = props
   const [email, setEmail] = useState('')
-  
+
   function handleGetCode(e) {
     e.preventDefault()
     if (!email) {
@@ -26,6 +24,10 @@ function Register(props) {
   return (
     <>
       <h2>Register Below!</h2>
+      <p>
+        Please put in your Email address below. You will be sent a code to
+        access this service.
+      </p>
       <form onSubmit={handleGetCode}>
         <label>Email: </label>
         <input

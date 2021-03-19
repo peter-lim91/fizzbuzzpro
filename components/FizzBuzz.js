@@ -11,16 +11,20 @@ export default function FizzBuzz(props) {
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', fileInput.current.files[0])
-    axios.post(domain + '/api/upload', formData).then((r) => setImage(r.data.image))
+    axios
+      .post(domain + '/api/upload', formData)
+      .then((r) => setImage(r.data.image))
   }
   return (
     <>
-    <form onSubmit={handleImageSubmit}>
-      <label>Select Image: </label>
-      <input type='file' name='file' ref={fileInput}></input>
-      <button type='submit'>Submit</button>
-    </form>
-    {image ? <FizzBuzzImage image={image} /> : null}
+      <p>Please upload an image that you want to "fizzbuzz"</p>
+      <form onSubmit={handleImageSubmit}>
+        <label>Select Image: </label>
+        <input type='file' name='file' ref={fileInput}></input>
+        <br />
+        <button type='submit'>FizzBuzz!</button>
+      </form>
+      {image ? <FizzBuzzImage image={image} /> : null}
     </>
   )
 }
