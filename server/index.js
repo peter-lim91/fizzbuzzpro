@@ -1,8 +1,6 @@
-const express = require('express')
 const next = require('next')
-const session = require('./configs/session')
-const cors = require('cors')
 
+const server = require('./configs/server')
 const apiRoutes = require('./routes/api')
 
 const dev = process.env.NEXT_ENV !== 'production'
@@ -12,13 +10,6 @@ const handle = app.getRequestHandler()
 const PORT = process.env.PORT || 3000
 
 app.prepare().then(() => {
-  //server setup
-  const server = express()
-  server.use(cors())
-  server.use(express.json())
-  server.use(express.urlencoded({ extended: false }))
-  server.use(session)
-
   //server routes
   server.use('/api', apiRoutes)
 
