@@ -1,7 +1,7 @@
 const session = require('express-session')
 const KnexSessionStore = require('connect-session-knex')(session)
 
-const connection = require('./db/connection')
+const connection = require('../db/connection')
 
 const fileStoreOptions = {
   knex: connection,
