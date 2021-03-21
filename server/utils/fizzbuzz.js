@@ -7,6 +7,9 @@ module.exports = { detectFulltext }
 
 function fizzbuzz(number) {
   let result = ''
+  if (number === 0) {
+    return result
+  }
   if (number % 3 === 0) {
     result += 'fizz'
   }
@@ -33,7 +36,7 @@ async function detectFulltext(imageBuffer) {
         private_key: process.env.GV_PRIVATE_KEY.replace(/\\n/gm, '\n'),
       },
     })
-  
+
     const [result] = await client.documentTextDetection(imageBuffer)
     const image = gm(imageBuffer)
     image.autoOrient()
@@ -44,7 +47,11 @@ async function detectFulltext(imageBuffer) {
           paragraph.words.forEach((word) => {
             const wordText = word.symbols.map((s) => s.text).join('')
             const number = parseInt(wordText)
-            if ((fb = fizzbuzz(number))) {
+            const fb = fizzbuzz(number)
+            if (fb) {
+              console.log('Word:', wordText)
+              console.log('Number:', number)
+              console.log('fizzbuzz:', fb)
               const color = () => {
                 if (fb === 'fizz') return '#F008'
                 if (fb === 'buzz') return '#0F08'
@@ -56,15 +63,13 @@ async function detectFulltext(imageBuffer) {
                 word.boundingBox.vertices[2].y,
               ]
               // const font = path.join(process.cwd(), 'fonts','arial.ttf')
-              image
-                .fill(color())
-                .drawPolygon(...corners)
+              image.fill(color()).drawPolygon(...corners)
 
-                // .font(font, 25)
-                // .fill('white')
-                // .drawPolygon(...corners)
-                // .fill('black')
-                // .drawText(...vertexText, fb)
+              // .font(font, 25)
+              // .fill('white')
+              // .drawPolygon(...corners)
+              // .fill('black')
+              // .drawText(...vertexText, fb)
             }
           })
         })
@@ -76,6 +81,5 @@ async function detectFulltext(imageBuffer) {
       const base64Image = buffer.toString('base64')
       resolve(base64Image)
     })
-
   })
 }
