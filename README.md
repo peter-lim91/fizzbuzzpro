@@ -19,7 +19,7 @@ FizzBuzz + AI OCR + XaaS = Image based FizzBuzz as a service. You upload an imag
 
 ## But why?
 
-I'd already created the core "feature". Turning it into an actual service provided the opportunity to use and learn the following.
+I'd already created the core "feature" for fun. Building it into a "proper" website provided the opportunity to use and learn the following.
 
 - Next.js
 - React
