@@ -28,15 +28,15 @@ export default function Home(props) {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>FizzBuzz Pro</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to FizzBuzz Pro!</h1>
-        <p>
+        <h1 className={'font-sans text-6xl m-8'}>Welcome to FizzBuzz Pro!</h1>
+        <p className={'font-sans m-4'}>
           Legend:
           <br />
           Red = Fizz

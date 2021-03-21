@@ -16,15 +16,30 @@ export default function FizzBuzz(props) {
       .then((r) => setImage(r.data.image))
   }
   return (
-    <>
-      <p>Please upload an image that you want to "fizzbuzz"</p>
-      <form onSubmit={handleImageSubmit}>
-        <label>Select Image: </label>
-        <input type='file' name='file' ref={fileInput}></input>
-        <br />
-        <button type='submit'>FizzBuzz!</button>
+    <div className='flex flex-col justify-center items-center'>
+      <p className='m-2'>Please upload an image that you want to "fizzbuzz"</p>
+      <form
+        onSubmit={handleImageSubmit}
+        className=' flex flex-col justify-center items-center m-2'
+      >
+        <label htmlFor='file' className=''>
+          Select Image{' '}
+        </label>
+        <input
+          id='file'
+          type='file'
+          name='file'
+          ref={fileInput}
+          className='m-2'
+        ></input>
+        <button
+          className='border-solid border-black border-2 rounded bg-gray-100 p-2'
+          type='submit'
+        >
+          FizzBuzz!
+        </button>
       </form>
       {image ? <FizzBuzzImage image={image} /> : null}
-    </>
+    </div>
   )
 }

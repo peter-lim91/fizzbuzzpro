@@ -16,6 +16,7 @@
   "dependencies": {
     "@google-cloud/vision": "^2.3.1",
     "@sendgrid/mail": "^7.4.2",
+    "@tailwindcss/forms": "^0.2.1",
     "axios": "^0.21.1",
     "connect-session-knex": "^2.0.0",
     "cors": "^2.8.5",
