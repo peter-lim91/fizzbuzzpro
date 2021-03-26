@@ -1,4 +1,5 @@
 import { useState, createRef } from 'react'
+import { Link } from 'next/link'
 import axios from 'axios'
 import FizzBuzzImage from './FizzBuzzImage'
 
@@ -17,7 +18,15 @@ export default function FizzBuzz(props) {
   }
   return (
     <>
-      <p>Please upload an image that you want to "fizzbuzz"</p>
+      <p>
+        Please upload an image that you want to "fizzbuzz". It can be any image
+        with numbers.
+      </p>
+      {/* <Link to='/example.png'> */}
+      <a href='/example.png' download>
+        Click here for a sample image to use
+      </a>
+      {/* </Link> */}
       <form onSubmit={handleImageSubmit}>
         <label>Select Image: </label>
         <input type='file' name='file' ref={fileInput}></input>
