@@ -1,4 +1,5 @@
 import { useState, createRef } from 'react'
+import { Link } from 'next/link'
 import axios from 'axios'
 import FizzBuzzImage from './FizzBuzzImage'
 
@@ -17,7 +18,13 @@ export default function FizzBuzz(props) {
   }
   return (
     <div className='flex flex-col justify-center items-center'>
-      <p className='m-2'>Please upload an image that you want to "fizzbuzz"</p>
+      <p className='m-2'>
+        Please upload an image that you want to "fizzbuzz". It can be any image
+        with numbers.
+      </p>
+      <a href='/example.png' download>
+        Click here for a sample image to use
+      </a>
       <form
         onSubmit={handleImageSubmit}
         className=' flex flex-col justify-center items-center m-2'
