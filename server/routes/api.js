@@ -10,7 +10,9 @@ module.exports = router
 // /api Routes
 
 router.post('/upload', (req, res, next) => {
-  if (req?.session?.authorized) {
+  // if (req?.session?.authorized) {
+  if (true) {
+    //override auth requirement
     next()
   } else {
     res.json({ authorized: false, message: 'You are not Authorized"' })
