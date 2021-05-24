@@ -39,7 +39,7 @@ async function detectFulltext(imageBuffer) {
 
     const [result] = await client.documentTextDetection(imageBuffer)
     const image = gm(imageBuffer)
-    image.autoOrient()
+    // image.autoOrient()
     const fullTextAnnotation = result.fullTextAnnotation
     fullTextAnnotation.pages.forEach((page) => {
       page.blocks.forEach((block) => {
